@@ -9,13 +9,13 @@ public class RegexMatches {
     final static Pattern arabic = Pattern.compile(patternArabic);
     final static Pattern Roman = Pattern.compile(patternRoman);
 
-    public static boolean getMatchArabic(String input)
+    public static boolean isMatchArabicExp(String input)
     {
         Matcher arabicValue = arabic.matcher(input);
         return (arabicValue.matches());
     }
 
-    public static boolean getMatchRoman(String input)
+    public static boolean isMatchRomanExp(String input)
     {
         Matcher romanValue = Roman.matcher(input);
         return (romanValue.matches());

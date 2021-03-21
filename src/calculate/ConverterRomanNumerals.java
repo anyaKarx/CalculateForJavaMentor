@@ -4,7 +4,7 @@ import java.util.List;
 
 public class ConverterRomanNumerals {
     public static int romanToArabic(String input) {
-        String romanNumeral = input.toUpperCase();
+        String romanNumeral = input;
         int result = 0;
 
         List<RomanSymbols> romanNumerals = RomanSymbols.getReverseSortedValues();
@@ -21,17 +21,15 @@ public class ConverterRomanNumerals {
             }
         }
         if (romanNumeral.length() > 0) {
-            throw new IllegalArgumentException(input + " cannot be converted to a Roman Numeral");
+            throw new IllegalArgumentException(input + " конвертация в римские цифры невозможна");
         }
 
         return result;
     }
 
     public static String arabicToRoman(int number) {
-        if ((number <= 0) || (number > 4000)) {
-            throw new IllegalArgumentException(number + " is not in range [1,4000]");
-        }
-
+        if (number <= 0) throw new IllegalArgumentException("Вы получили результат, который, к сожалению," +
+                " в римском счислении неотобразить.");
         List<RomanSymbols> romanNumerals = RomanSymbols.getReverseSortedValues();
 
         int i = 0;
@@ -39,7 +37,7 @@ public class ConverterRomanNumerals {
 
         while (number > 0 && i < romanNumerals.size()) {
             RomanSymbols currentSymbol = romanNumerals.get(i);
-            if (currentSymbol.GetValue() <= number) {
+            if (currentSymbol.GetValue() <= number){
                 sb.append(currentSymbol.name());
                 number -= currentSymbol.GetValue();
             } else {
